@@ -1,0 +1,75 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define INIT            std::ios_base::sync_with_stdio(false);std::cin.tie(0);
+#define f(i,n)          for(i = 0 ; i < n ; i++)
+#define f1(i,n)         for(i = 1 ; i < n ; i++)
+#define fodd(i,n)       for(i = 1 ; i < n ; i += 2)
+#define feven(i,n)      for(i = 0 ; i < n ; i += 2)
+#define frev(i,n)       for(i = n ; i >= 0 ; i--)     
+#define si(x)	        scanf("%d",&x);
+#define sl(x)	        scanf("%lld",&x);
+#define ss(s)	        scanf("%s",s);
+#define pi(x)	        printf("%d\n",x);
+#define pl(x)	        printf("%lld\n",x);
+#define ps(s)	        printf("%s\n",s);
+#define MOD             1000000007;
+#define inf             100000000000000000ll;
+typedef long long       ll;
+typedef vector<ll>		vl;
+typedef vector<int>     vi;
+typedef map<int,int>    mii;
+typedef map<string,int> msi;
+typedef queue<int>      qi;
+
+
+ll i = 0  , j = 0 , c = 0 , flag = -1 , countit = 0 , n = 0 , m = 0 ;
+
+ll powfast ( ll n , ll m ){
+    if( m == 0 )
+        return 1;
+    if( m == 1 )
+        return n;
+    return n * powfast(n,m-1);
+}
+
+ll powfaster ( ll n , ll m ){
+    if( m == 0 )
+        return 1;
+    if( m == 1 )
+        return n;
+    if( m % 2 == 0)
+        return powfast(n,m/2) * powfast(n,m/2);
+    else    
+        return n * powfast(n,(m-1)/2) * powfast(n,(m-1)/2);
+}
+
+ll powfastest ( ll n , ll m ){
+    if( m == 0 )
+        return 1;
+    if( m == 1 )
+        return n;
+    if( m % 2 == 0){
+        int temp = powfastest(n,m/2);
+        return temp * temp;
+    }
+    else{
+        int temp = powfastest(n,(m-1)/2);
+        return n * temp * temp;
+    }
+}
+
+int main(){
+   
+    INIT
+    int t = 0 ; 
+    cin>>t;
+    
+    while(t--){
+        i = 0  ; j = 0 ; c = 0 ; flag = -1 ; countit = 0 ; n = 0 ; m = 0 ;
+        cin >> n >> m;
+        cout << powfastest(n,m) << endl;
+    }
+       
+    return 0;
+}
